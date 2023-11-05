@@ -1,19 +1,5 @@
 # builds a new Rails application version 7
 
-FROM ruby:3.2.2-slim as builder
+FROM marcelomaidden/jenkins_with_docker:1.0
 
-RUN gem install rails -v 7.0.0
-
-WORKDIR /var/app
-
-RUN rails new blog
-
-RUN rails db:create
-
-FROM ruby:3.2.2-slim
-
-COPY --from=builder . .
-
-CMD ["/bin/sh", "rails s"]
-
-EXPOSE 3000
+RUN echo "Just to test if the Jenkins pipeline is working with Docker"

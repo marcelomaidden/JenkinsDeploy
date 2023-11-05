@@ -16,8 +16,8 @@ pipeline {
             steps {
                 sh "echo 'Building..'"
 
-                sh "docker build -f devops/Dockerfile -t marcelomaidden/rails_blog:$BUILD_NUMBER ."
-                sh "docker tag marcelomaidden/blog:$BUILD_NUMBER marcelomaidden/rails_blog:latest"
+                sh "docker build -f devops/Dockerfile -t marcelomaidden/jenkins_with_docker:$BUILD_NUMBER ."
+                sh "docker tag marcelomaidden/jenkins_with_docker:$BUILD_NUMBER marcelomaidden/jenkins_with_docker:latest"
             }
         }
 
@@ -28,8 +28,8 @@ pipeline {
                                                 usernameVariable: 'USERNAME')]){
                 sh "echo 'Deploying....'"
                 sh "docker login -u '$USERNAME' -p '$PASSWORD'"
-                sh "docker push marcelomaidden/rails_blog:$BUILD_NUMBER"
-                sh "docker push marcelomaidden/rails_blog:latest"
+                sh "docker push marcelomaidden/jenkins_with_docker:$BUILD_NUMBER"
+                sh "docker push marcelomaidden/jenkins_with_docker:latest"
               }
             }
         }
