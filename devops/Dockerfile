@@ -1,19 +1,25 @@
 # builds a new Rails application version 7
 
-FROM ruby:3.2.2-slim as builder
+FROM jenkins/jenkins
 
-RUN gem install rails -v 7.0.0
+USER root
 
-WORKDIR /var/app
+# Add Docker's official GPG key:
+RUN apt-get update && \
+    apt-get install ca-certificates curl gnupg \
+    install -m 0755 -d /etc/apt/keyrings
 
-RUN rails new blog
+RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | gpg --dearmor -o /etc/apt/keyrings/docker.gpg \
+    && chmod a+r /etc/apt/keyrings/docker.gpg
 
-RUN rails db:create
+# Add the repository to Apt sources:
+RUN echo \
+  "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+  "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null \
+  && apt-get update
 
-FROM ruby:3.2.2-slim
+RUN apt-get install docker-ce docker-ce-cli \
+    containerd.io docker-buildx-plugin docker-compose-plugin
 
-COPY --from=builder . .
-
-CMD ["/bin/sh", "rails s"]
-
-EXPOSE 3000
+USER jenkins
