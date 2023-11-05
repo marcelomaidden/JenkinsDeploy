@@ -107,16 +107,6 @@ On your preferred browser, use the URL [http://localhost:9090](http://localhost:
 
 Follow the [instructions to install](https://docs.docker.com/get-docker/) present the official Docker website
 
-<!-- USAGE EXAMPLES -->
-## Usage
-
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
 
 <!-- ROADMAP -->
 ## Roadmap
@@ -164,4 +154,4 @@ Use this space to list resources you find helpful and would like to give credit 
 [license-shield]: https://img.shields.io/github/license/marcelomaidden/JenkinsDeploy.svg?style=for-the-badge
 [license-url]: https://github.com/marcelomaidden/JenkinsDeploy/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/marcelomaidden
+[linkedin-url]: https://www.linkedin.com/in/marcelofernandesdearaujo/
