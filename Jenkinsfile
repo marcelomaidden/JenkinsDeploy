@@ -1,9 +1,15 @@
 pipeline {
     agent any
 
+    options {
+        parallelsAlwaysFailFast()
+    }
+
     stages {
         stage('Checkout SCM') {
-          checkout scm
+          steps {
+            checkout scm
+          }
         }
 
         stage('Build') {
