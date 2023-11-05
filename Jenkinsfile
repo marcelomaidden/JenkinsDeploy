@@ -15,16 +15,22 @@ pipeline {
         stage('Build') {
             steps {
                 sh "echo 'Building..'"
+
+                sh "docker build -f devops/Dockerfile -t marcelomaidden/jenkins_with_docker:$BUILD_NUMBER ."
+                sh "docker tag marcelomaidden/jenkins_with_docker:$BUILD_NUMBER marcelomaidden/jenkins_with_docker:latest"
             }
         }
-        stage('Test') {
-            steps {
-                sh "echo 'Testing..'"
-            }
-        }
+
         stage('Deploy') {
             steps {
+              withCredentials([usernamePassword(credentialsId: 'docker-credentials',
+                                                passwordVariable: 'PASSWORD',
+                                                usernameVariable: 'USERNAME')]){
                 sh "echo 'Deploying....'"
+                sh "docker login -u '$USERNAME' -p '$PASSWORD'"
+                sh "docker push marcelomaidden/jenkins_with_docker:$BUILD_NUMBER"
+                sh "docker push marcelomaidden/jenkins_with_docker:latest"
+              }
             }
         }
     }
