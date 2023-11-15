@@ -5,7 +5,6 @@
 [![MIT License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
-<!-- PROJECT LOGO -->
 <br />
 <div align="center">
   <h3 align="center">Jenkins with Docker</h3>
@@ -26,8 +25,8 @@
 </div>
 
 <!-- TABLE OF CONTENTS -->
+## Table Of Contents
 <details>
-  <summary>Table of Contents</summary>
   <ol>
     <li>
       <a href="#about-the-project">About The Project</a>
@@ -59,14 +58,14 @@
 This project is intended to create an image of Jenkins wich use Docker In Docker,
 so you can create pipelines that uses Docker to build images before deploying it.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#table-of-contents">back to top</a>)</p>
 
 ### Built With
 
 * [Docker](https://docs.docker.com/)
 * [Jenkins](https://www.jenkins.io/)
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#table-of-contents">back to top</a>)</p>
 
 <!-- GETTING STARTED -->
 ## Getting Started
@@ -109,14 +108,14 @@ Follow the [instructions to install](https://docs.docker.com/get-docker/) presen
 
 See the [open issues](https://github.com/marcelomaidden/JenkinsDeploy/issues) for a full list of proposed features (and known issues).
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#table-of-contents">back to top</a>)</p>
 
 <!-- LICENSE -->
 ## License
 
 Distributed under the MIT License. See `LICENSE.txt` for more information.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#table-of-contents">back to top</a>)</p>
 
 <!-- CONTACT -->
 ## Contact
@@ -125,7 +124,7 @@ Marcelo - [@marcelomaidden](https://twitter.com/marcelomaidden) - marcelomaidden
 
 Project Link: [https://github.com/marcelomaidden/JenkinsDeploy](https://github.com/marcelomaidden/JenkinsDeploy)
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#table-of-contents">back to top</a>)</p>
 
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
@@ -135,7 +134,7 @@ Use this space to list resources you find helpful and would like to give credit 
 * [Build a Jenkins image with Docker](https://www.jenkins.io/doc/book/installing/docker/)
 * [README template](https://github.com/othneildrew/Best-README-Template)
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#table-of-contents">back to top</a>)</p>
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
