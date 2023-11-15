@@ -16,28 +16,28 @@ pipeline {
             steps {
               script {
                   sh "echo 'Building..'"
+                  // Uses Docker Pipeline Plugin with Username with password credentials
+                  // https://plugins.jenkins.io/docker-workflow/
                   docker.withRegistry('https://docker.io', 'docker-credentials'){
                     docker.build("marcelomaidden/jenkins_with_docker:$BUILD_NUMBER", "-f ./devops/Dockerfile ./devops")
-                    docker.tag(["marcelomaidden/jenkins_with_docker:$BUILD_NUMBER", "marcelomaidden/jenkins_with_docker:latest"])
                   }
-
-                  // sh "docker build -f devops/Dockerfile -t marcelomaidden/jenkins_with_docker:$BUILD_NUMBER ."
-                  // sh "docker tag marcelomaidden/jenkins_with_docker:$BUILD_NUMBER marcelomaidden/jenkins_with_docker:latest"
               }
             }
         }
 
-        // stage('Deploy') {
-        //     steps {
-        //       withCredentials([usernamePassword(credentialsId: 'docker-credentials',
-        //                                         passwordVariable: 'PASSWORD',
-        //                                         usernameVariable: 'USERNAME')]){
-        //         sh "echo 'Deploying....'"
-        //         sh "docker login -u '$USERNAME' -p '$PASSWORD'"
-        //         sh "docker push marcelomaidden/jenkins_with_docker:$BUILD_NUMBER"
-        //         sh "docker push marcelomaidden/jenkins_with_docker:latest"
-        //       }
-        //     }
-        // }
+        stage('Deploy') {
+            steps {
+              script {
+                sh "echo 'Deploying....'"
+                // Uses Docker Pipeline Plugin with Username with password credentials
+
+                docker.withRegistry('', 'docker-credentials') {
+                  def image = docker.image("marcelomaidden/jenkins_with_docker:$BUILD_NUMBER")
+                  image.push()
+                  image.push('latest')
+                }
+              }
+            }
+        }
     }
 }
