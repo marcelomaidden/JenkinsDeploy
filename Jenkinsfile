@@ -13,15 +13,17 @@ pipeline {
         }
 
         stage('Build') {
-            script {
-                sh "echo 'Building..'"
-                docker.withRegistry('', 'docker-credentials'){
-                  docker.build("marcelomaidden/jenkins_with_docker:$BUILD_NUMBER")
-                  docker.tag(["marcelomaidden/jenkins_with_docker:$BUILD_NUMBER", "marcelomaidden/jenkins_with_docker:latest"])
-                }
+            steps {
+              script {
+                  sh "echo 'Building..'"
+                  docker.withRegistry('', 'docker-credentials'){
+                    docker.build("marcelomaidden/jenkins_with_docker:$BUILD_NUMBER")
+                    docker.tag(["marcelomaidden/jenkins_with_docker:$BUILD_NUMBER", "marcelomaidden/jenkins_with_docker:latest"])
+                  }
 
-                // sh "docker build -f devops/Dockerfile -t marcelomaidden/jenkins_with_docker:$BUILD_NUMBER ."
-                // sh "docker tag marcelomaidden/jenkins_with_docker:$BUILD_NUMBER marcelomaidden/jenkins_with_docker:latest"
+                  // sh "docker build -f devops/Dockerfile -t marcelomaidden/jenkins_with_docker:$BUILD_NUMBER ."
+                  // sh "docker tag marcelomaidden/jenkins_with_docker:$BUILD_NUMBER marcelomaidden/jenkins_with_docker:latest"
+              }
             }
         }
 
