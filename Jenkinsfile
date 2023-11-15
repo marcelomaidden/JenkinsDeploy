@@ -16,7 +16,7 @@ pipeline {
             steps {
               script {
                   sh "echo 'Building..'"
-                  docker.withRegistry('', 'docker-credentials'){
+                  docker.withRegistry('https://docker.io', 'docker-credentials'){
                     docker.build("marcelomaidden/jenkins_with_docker:$BUILD_NUMBER")
                     docker.tag(["marcelomaidden/jenkins_with_docker:$BUILD_NUMBER", "marcelomaidden/jenkins_with_docker:latest"])
                   }
