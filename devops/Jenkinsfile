@@ -27,17 +27,17 @@ pipeline {
             }
         }
 
-        stage('Deploy') {
-            steps {
-              withCredentials([usernamePassword(credentialsId: 'docker-credentials',
-                                                passwordVariable: 'PASSWORD',
-                                                usernameVariable: 'USERNAME')]){
-                sh "echo 'Deploying....'"
-                sh "docker login -u '$USERNAME' -p '$PASSWORD'"
-                sh "docker push marcelomaidden/jenkins_with_docker:$BUILD_NUMBER"
-                sh "docker push marcelomaidden/jenkins_with_docker:latest"
-              }
-            }
-        }
+        // stage('Deploy') {
+        //     steps {
+        //       withCredentials([usernamePassword(credentialsId: 'docker-credentials',
+        //                                         passwordVariable: 'PASSWORD',
+        //                                         usernameVariable: 'USERNAME')]){
+        //         sh "echo 'Deploying....'"
+        //         sh "docker login -u '$USERNAME' -p '$PASSWORD'"
+        //         sh "docker push marcelomaidden/jenkins_with_docker:$BUILD_NUMBER"
+        //         sh "docker push marcelomaidden/jenkins_with_docker:latest"
+        //       }
+        //     }
+        // }
     }
 }
