@@ -13,7 +13,7 @@ pipeline {
         }
 
         stage('Build') {
-            steps {
+            script {
                 sh "echo 'Building..'"
                 docker.withRegistry('', 'docker-credentials'){
                   docker.build("marcelomaidden/jenkins_with_docker:$BUILD_NUMBER")
